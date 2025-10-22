@@ -38,3 +38,64 @@ def curiosity_reward_with_penalty(is_redundant=False, is_error=False, step=0,
     if is_error:
         reward -= penalty_error
     return max(reward, -1.0)
+
+
+'''
+import re
+
+def check_negative_reward_conditions(action_log, current_action, output_log, knowledge_gain,
+                                     max_repeats=3, min_info_gain=0.01,
+                                     error_keywords=None, critical_error_keywords=None,
+                                     system_keywords=None):
+    """
+    음의 보상 조건을 감지하며, 패널티 점수를 음수 값으로 반환한다.
+    """
+
+    if error_keywords is None:
+        error_keywords = ["error", "failed", "exception", "denied", "invalid"]
+
+    if critical_error_keywords is None:
+        critical_error_keywords = ["segmentation fault", "core dumped", "crash", "fatal", "terminated"]
+
+    if system_keywords is None:
+        system_keywords = ["unauthorized", "access denied", "permission", "firewall"]
+
+    result = {
+        'redundant': False,
+        'error': False,
+        'critical': False,
+        'inefficient': False,
+        'penalty_score': 0.0
+    }
+
+    # (1) 반복된 행동 감지
+    repeat_count = action_log.count(current_action)
+    if repeat_count >= max_repeats:
+        result['redundant'] = True
+        result['penalty_score'] -= 0.3 * (repeat_count - max_repeats + 1)
+
+    # (2) 일반 오류 로그 탐지
+    if any(re.search(rf"\b{kw}\b", output_log, re.IGNORECASE) for kw in error_keywords):
+        result['error'] = True
+        result['penalty_score'] -= 0.5
+
+    # (3) 시스템 크래시나 심각한 오류
+    if any(re.search(rf"\b{kw}\b", output_log, re.IGNORECASE) for kw in critical_error_keywords):
+        result['critical'] = True
+        result['penalty_score'] -= 1.0
+
+    # (4) 접근 제한 관련 단어 감지 (방화벽, 권한 등)
+    if any(re.search(rf"\b{kw}\b", output_log, re.IGNORECASE) for kw in system_keywords):
+        result['error'] = True
+        result['penalty_score'] -= 0.2
+
+    # (5) 새로운 지식이 거의 없는 경우 (비효율)
+    if knowledge_gain < min_info_gain:
+        result['inefficient'] = True
+        result['penalty_score'] -= (min_info_gain - knowledge_gain) * 2
+
+    # (6) 최소값 한정 (과도한 음의 보상 방지)
+    result['penalty_score'] = max(-1.0, result['penalty_score'])
+
+    return result
+'''
