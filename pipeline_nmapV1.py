@@ -13,7 +13,7 @@
 #
 # 사용 예시
 # (A-1) 제너레이터 실행 결과를 파이프로 연결:
-#   python tools_0.2.1.json_test_.py | python pipeline_nmap.py --from-generator -
+#   python tools_0.2.1.json_test_.py | python pipeline_nmapV1.py --from-generator -
 # (A-2) 제너레이터 결과를 파일로 저장 후:
 #   python tools_0.2.1.json_test_.py > samples.json
 #   python pipeline_nmap.py --from-generator samples.json
