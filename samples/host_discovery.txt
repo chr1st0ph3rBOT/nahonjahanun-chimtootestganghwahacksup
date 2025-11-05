@@ -1,0 +1,6 @@
+# Nmap 7.93 scan initiated Fri Oct 24 12:00:00 2025 as: nmap -sn 192.0.2.0/30 -T4 -oN host_discovery.txt
+Nmap scan report for 192.0.2.1
+Host is up (0.022s latency).
+Nmap scan report for 192.0.2.2
+Host is up (0.045s latency).
+Nmap done: 4 IP addresses (2 hosts up) scanned in 2.47 seconds

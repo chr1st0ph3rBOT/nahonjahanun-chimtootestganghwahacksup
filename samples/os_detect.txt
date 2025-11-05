@@ -1,0 +1,19 @@
+# Nmap 7.93 scan initiated Fri Oct 24 12:03:00 2025 as: nmap -A -p 22,80 --script=banner 198.51.100.20 -oN os_detect.txt
+Nmap scan report for 198.51.100.20
+Host is up (0.050s latency).
+
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 7.6p1 Debian 4
+80/tcp open  http    Apache httpd 2.4.29
+
+Device type: general purpose
+Running: Linux 3.X|4.X
+OS CPE: cpe:/o:linux:linux_kernel
+OS details: Linux 3.10 - 4.15
+Network Distance: 1 hop
+
+Host script results:
+|_banner: Apache/2.4.29 (Debian)
+|_ssh-hostkey: SSH-2.0-OpenSSH_7.6p1 Debian-4
+
+Nmap done: 1 IP address (1 host up) scanned in 8.01 seconds

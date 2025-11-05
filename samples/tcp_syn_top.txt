@@ -1,0 +1,10 @@
+# Nmap 7.93 scan initiated Fri Oct 24 12:01:00 2025 as: nmap -sS --top-ports 100 198.51.100.10 -T3 -oN tcp_syn_top.txt
+Nmap scan report for example.test (198.51.100.10)
+Host is up (0.018s latency).
+Not shown: 97 closed ports
+PORT    STATE SERVICE
+22/tcp  open  ssh
+80/tcp  open  http
+443/tcp open  https
+8080/tcp closed http-proxy
+Nmap done: 1 IP address (1 host up) scanned in 5.42 seconds

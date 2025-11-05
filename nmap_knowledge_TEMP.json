@@ -1,0 +1,161 @@
+{
+  "schema_version": "1.0",
+  "source_files": [
+    "samples\\host_discovery.txt",
+    "samples\\tcp_syn_top.txt",
+    "samples\\service_version.txt",
+    "samples\\os_detect.txt"
+  ],
+  "results": [
+    {
+      "source": "samples\\host_discovery.txt",
+      "scan": {
+        "cmdline": "nmap -sn 192.0.2.0/30 -T4 -oN host_discovery.txt"
+      },
+      "hosts": [
+        {
+          "hostname": null,
+          "ip": "192.0.2.1",
+          "status": "up",
+          "ports": [],
+          "os": {},
+          "service_info": null,
+          "scripts": {}
+        },
+        {
+          "hostname": null,
+          "ip": "192.0.2.2",
+          "status": "up",
+          "ports": [],
+          "os": {},
+          "service_info": null,
+          "scripts": {}
+        }
+      ]
+    },
+    {
+      "source": "samples\\tcp_syn_top.txt",
+      "scan": {
+        "cmdline": "nmap -sS --top-ports 100 198.51.100.10 -T3 -oN tcp_syn_top.txt"
+      },
+      "hosts": [
+        {
+          "hostname": "example.test",
+          "ip": "198.51.100.10",
+          "status": "up",
+          "ports": [
+            {
+              "port": 22,
+              "proto": "tcp",
+              "state": "open",
+              "service": "ssh",
+              "product": null
+            },
+            {
+              "port": 80,
+              "proto": "tcp",
+              "state": "open",
+              "service": "http",
+              "product": null
+            },
+            {
+              "port": 443,
+              "proto": "tcp",
+              "state": "open",
+              "service": "https",
+              "product": null
+            },
+            {
+              "port": 8080,
+              "proto": "tcp",
+              "state": "closed",
+              "service": "http-proxy",
+              "product": null
+            }
+          ],
+          "os": {},
+          "service_info": null,
+          "scripts": {}
+        }
+      ]
+    },
+    {
+      "source": "samples\\service_version.txt",
+      "scan": {
+        "cmdline": "nmap -sS -sV -p 22,80,443 203.0.113.5 -T3 -oN service_version.txt"
+      },
+      "hosts": [
+        {
+          "hostname": null,
+          "ip": "203.0.113.5",
+          "status": "up",
+          "ports": [
+            {
+              "port": 22,
+              "proto": "tcp",
+              "state": "open",
+              "service": "ssh",
+              "product": "OpenSSH 8.2p1 Ubuntu 4ubuntu0.3 (protocol 2.0)"
+            },
+            {
+              "port": 80,
+              "proto": "tcp",
+              "state": "open",
+              "service": "http",
+              "product": "Apache httpd 2.4.41 ((Ubuntu))"
+            },
+            {
+              "port": 443,
+              "proto": "tcp",
+              "state": "open",
+              "service": "https",
+              "product": "nginx 1.18.0"
+            }
+          ],
+          "os": {},
+          "service_info": "OS: Linux; CPE: cpe:/o:linux:linux_kernel",
+          "scripts": {}
+        }
+      ]
+    },
+    {
+      "source": "samples\\os_detect.txt",
+      "scan": {
+        "cmdline": "nmap -A -p 22,80 --script=banner 198.51.100.20 -oN os_detect.txt"
+      },
+      "hosts": [
+        {
+          "hostname": null,
+          "ip": "198.51.100.20",
+          "status": "up",
+          "ports": [
+            {
+              "port": 22,
+              "proto": "tcp",
+              "state": "open",
+              "service": "ssh",
+              "product": "OpenSSH 7.6p1 Debian 4"
+            },
+            {
+              "port": 80,
+              "proto": "tcp",
+              "state": "open",
+              "service": "http",
+              "product": "Apache httpd 2.4.29"
+            }
+          ],
+          "os": {
+            "device_type": "general purpose",
+            "running": "Linux 3.X|4.X",
+            "details": "Linux 3.10 - 4.15"
+          },
+          "service_info": null,
+          "scripts": {
+            "banner": "Apache/2.4.29 (Debian)",
+            "ssh-hostkey": "SSH-2.0-OpenSSH_7.6p1 Debian-4"
+          }
+        }
+      ]
+    }
+  ]
+}

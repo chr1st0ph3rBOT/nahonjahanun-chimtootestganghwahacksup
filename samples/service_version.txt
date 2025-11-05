@@ -1,0 +1,11 @@
+# Nmap 7.93 scan initiated Fri Oct 24 12:02:00 2025 as: nmap -sS -sV -p 22,80,443 203.0.113.5 -T3 -oN service_version.txt
+Nmap scan report for 203.0.113.5
+Host is up (0.030s latency).
+
+PORT    STATE SERVICE VERSION
+22/tcp  open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.3 (protocol 2.0)
+80/tcp  open  http    Apache httpd 2.4.41 ((Ubuntu))
+443/tcp open  https   nginx 1.18.0
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Nmap done: 1 IP address (1 host up) scanned in 3.34 seconds
